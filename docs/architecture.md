@@ -5,15 +5,29 @@ Let merchants map a basename to products, checkout metadata, and MCP purchase fl
 
 ## Current Foundation
 - Next.js App Router dashboard with the shared Base industrial-neon UI system.
-- Static product data in `lib/project-data.json` for the first demo surface.
+- File-backed storefront state in `.data/basename-commerce-db.json`, seeded from the MVP records.
 - Product status endpoint: `GET /api/basename-commerce/status`.
-- MCP tool names are displayed in the UI and ready to back with handlers.
+- Storefronts endpoints for listing, creating, quoting, and paid execution.
+- MCP JSON endpoint backed by live local state.
+
+## Modules
+- `lib/mvp-store.ts` owns records, stats, local persistence, and receipts.
+- `lib/mvp-payment.ts` prepares x402 payment requirements and verifies demo or facilitator-backed payments.
+- `app/api/basename-commerce/storefronts` exposes creation and listing.
+- `app/api/basename-commerce/storefronts/[slug]/quote` returns a payment requirement.
+- `app/api/basename-commerce/storefronts/[slug]/run` blocks unpaid access with `402 Payment Required`, records paid runs, and emits `payment-response`.
+- `app/api/mcp/basename-commerce` maps agent tools to discovery, quotes, prepared runs, and stats.
 
 ## Base Pattern
 - Base Account is the primary wallet and approval surface.
 - Read actions should stay free where possible.
 - Paid or premium calls should use x402 with explicit max-payment controls.
 - Write actions should return prepared calls and wait for user approval.
+
+## Payment Modes
+- `demo` mode accepts `x-demo-payment: accepted` so the local demo can show the full paid loop without live funds.
+- `strict` mode requires `x-payment` plus `X402_FACILITATOR_URL`; the app calls `/verify` and `/settle` before releasing paid results.
+- Receipts store item, amount, network, payment hash, facilitator reference, and timestamp for auditability.
 
 ## Safety Defaults
 - Base Sepolia first, then Base mainnet.
