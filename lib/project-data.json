@@ -1,0 +1,58 @@
+{
+  "repo": "base-mcp-basename-commerce",
+  "name": "BaseName Commerce",
+  "shortName": "BC",
+  "api": "basename-commerce",
+  "category": "Agent Storefronts",
+  "tagline": "Turn basenames into AI-readable storefronts with Base checkout.",
+  "status": "Merchant MVP foundation",
+  "mission": "Let merchants map a basename to products, checkout metadata, and MCP purchase flows for human and agent buyers.",
+  "primaryAction": "Create storefront",
+  "secondaryAction": "Resolve basename",
+  "metrics": [
+    {
+      "label": "Storefronts",
+      "value": "9",
+      "tone": "blue"
+    },
+    {
+      "label": "Orders",
+      "value": "74",
+      "tone": "green"
+    },
+    {
+      "label": "Revenue",
+      "value": "$216",
+      "tone": "amber"
+    }
+  ],
+  "workflow": [
+    "Merchant connects Base Account and claims a storefront profile.",
+    "Basename resolves to a catalog and checkout metadata.",
+    "Agent presents purchasable items to the user.",
+    "User approval settles the order in USDC on Base."
+  ],
+  "tools": [
+    "resolve_storefront",
+    "list_products",
+    "prepare_purchase",
+    "get_order_receipt"
+  ],
+  "records": [
+    [
+      "coffeetokens.base.eth",
+      "3 products",
+      "USDC checkout"
+    ],
+    [
+      "creatorvault.base.eth",
+      "7 products",
+      "Digital delivery"
+    ],
+    [
+      "agentgear.base.eth",
+      "2 products",
+      "MCP ready"
+    ]
+  ]
+}
