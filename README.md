@@ -1,30 +1,34 @@
 # BaseName Commerce
 
-basename-powered storefronts for AI-agent checkout.
+Turn basenames into AI-readable storefronts with Base checkout.
 
-**Status:** Planned fifth build after identity and commerce primitives.
+**Status:** Merchant MVP foundation
 
-BaseName Commerce turns a basename into an agent-readable storefront with product discovery, USDC checkout, and Base MCP purchase execution.
+Let merchants map a basename to products, checkout metadata, and MCP purchase flows for human and agent buyers.
 
-## Why It Exists
-Base MCP gives AI assistants access to Base Account actions such as balances, sends, swaps, contract calls, and x402 payments, with user approval for writes. This project turns that capability into a focused product for merchants, creators, Base Name owners, and AI agents that shop or purchase digital goods.
+## Current MVP
+- Base industrial-neon UI theme from the shared suite prompt.
+- Responsive dashboard with wallet/action controls, metrics, workflow, MCP tools, and live record surface.
+- Product status API at `/api/basename-commerce/status`.
+- Smoke checks for required dashboard data.
 
-## Core Capabilities
-- Merchant dashboard for storefront setup, product catalog, inventory, and pricing.
-- Base Name resolution layer that maps names to storefront metadata.
-- Public storefront pages optimized for human browsing and AI extraction.
-- Purchase prepare endpoints that return unsigned transaction batches.
-- MCP plugin for storefront discovery, product lookup, and checkout.
+## Local Development
+```bash
+npm install
+npm run dev
+```
 
-## Roadmap Snapshot
-1. Build merchant dashboard and product catalog CRUD.
-2. Implement basename lookup and storefront pages.
-3. Add USDC checkout and order receipt flow.
-4. Expose purchase prepare endpoint and MCP plugin spec.
-5. Launch demo merchant storefronts and public docs.
+Open `http://127.0.0.1:3000`.
 
-## Repository Status
-This repository is public from day one. It starts with product, architecture, roadmap, and demo documentation. Implementation commits should stay small and use conventional commit prefixes.
+## Checks
+```bash
+npm run typecheck
+npm run build
+npm run test:smoke
+```
+
+## Next Build Slice
+Wire the mocked dashboard data into real Base Sepolia reads, x402 payment verification, or contract prepare endpoints depending on this product's launch path.
 
 ## License
 MIT
