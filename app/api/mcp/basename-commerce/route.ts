@@ -46,7 +46,7 @@ export async function POST(request: Request) {
           slug: item.slug,
           priceUsdc: item.priceUsdc,
           resource: `/api/basename-commerce/storefronts/${item.slug}/run`,
-          network: process.env.BASENAME_COMMERCE_X402_NETWORK || "eip155:84532",
+          network: process.env.BASENAME_COMMERCE_X402_NETWORK || "eip155:8453",
         },
       });
     }
